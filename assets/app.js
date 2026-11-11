@@ -1,5 +1,5 @@
 import {createCycle,sampleCycle,sampleLightPulse,shakeItems,spinItems} from './animation.mjs?v=7';
-import {chooseDemoObjects,objectLibrary} from './demo.mjs?v=5';
+import {chooseDemoObjects,objectLibrary} from './demo.mjs?v=6';
 import {recordVideo,videoSupported} from './video.mjs?v=2';
 import {layout,outputSize} from './layout.mjs?v=13';
 import {compositionUnit,fittedCompositionUnit,paintObjectLayers} from './object-renderer.mjs?v=25';
