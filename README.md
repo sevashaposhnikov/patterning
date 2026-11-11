@@ -24,7 +24,7 @@ Open <http://localhost:8000> in a modern browser. The app is a static site with 
 
 ## Assets and third-party notices
 
-This repository uses three sample illustrations from the project. The expanded live demo library and its game-inspired seal are outside this source distribution.
+The demo library includes all 22 images generated for Patterning. The live site’s game-inspired seal is separate from this source distribution.
 
 - [Inter](https://github.com/rsms/inter) is distributed under the [SIL Open Font License 1.1](assets/inter-license.txt).
 - [U²-Net](https://github.com/xuebinqin/U-2-Net) is distributed under [Apache 2.0](assets/MODEL-LICENSE.txt). The bundled ONNX conversion is the [U²-NetP model from the rembg release](https://github.com/danielgatis/rembg/releases/download/v0.0.0/u2netp.onnx). Its SHA-256 is `309c8469258dda742793dce0ebea8e6dd393174f89934733ecc8b14c76f4ddd8`.
