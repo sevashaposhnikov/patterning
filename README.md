@@ -4,6 +4,10 @@ Patterning turns everyday objects into animated kaleidoscopic posters. It's an i
 
 [Try the live project](https://sevashaposhnikov.com/patterning/)
 
+## Examples
+
+<img src="assets/example-blue.webp" width="260" alt="DON’T EAT THE MOLD: counter-rotating rings of pigeons and traffic cones"> <img src="assets/example-red.webp" width="260" alt="KEEP AWAY FROM THE RED: a rotating ring of cats">
+
 ## Run locally
 
 From this directory, run:
@@ -24,7 +28,7 @@ Open <http://localhost:8000> in a modern browser. The app is a static site with 
 
 ## Assets and third-party notices
 
-The demo library includes all 22 images generated for Patterning. The live site’s game-inspired seal is separate from this source distribution.
+The demo library includes all 22 images generated for Patterning. The example animations were exported from the live site and include its fan-project seal.
 
 - [Inter](https://github.com/rsms/inter) is distributed under the [SIL Open Font License 1.1](assets/inter-license.txt).
 - [U²-Net](https://github.com/xuebinqin/U-2-Net) is distributed under [Apache 2.0](assets/MODEL-LICENSE.txt). The bundled ONNX conversion is the [U²-NetP model from the rembg release](https://github.com/danielgatis/rembg/releases/download/v0.0.0/u2netp.onnx). Its SHA-256 is `309c8469258dda742793dce0ebea8e6dd393174f89934733ecc8b14c76f4ddd8`.
