@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#10100f"><title>Patterning — Seva Shaposhnikov</title><meta name="description" content="Turn everyday objects into impossible patterns. A small, free kaleidoscope playground by Seva Shaposhnikov."><link rel="stylesheet" href="./assets/style.css?v=21"></head>
+<body data-mobile-panel="arrangement" data-sheet="closed">
+<main>
+<section class="stage" aria-label="Pattern preview">
+<a class="home-link" href="https://sevashaposhnikov.com/">Seva Shaposhnikov</a>
+<button id="about-button" class="about-button" type="button" aria-haspopup="dialog" aria-controls="about-dialog">About &amp; Credits</button>
+<div class="canvas-wrap" id="drop-stage"><canvas id="canvas" aria-label="A cinematic radial composition of repeated objects"></canvas><div class="poster-inline" id="poster-inline" hidden>
+<textarea class="poster-inline-field" data-poster-copy="headline" aria-label="Edit poster headline" title="Edit poster headline" spellcheck="false"></textarea>
+<textarea class="poster-inline-field" data-poster-copy="footerCopy" aria-label="Edit lower-right poster text" title="Edit lower-right poster text"></textarea>
+</div><div class="drop-overlay" aria-hidden="true">＋</div></div>
+<div class="preview-toolbar"><div class="format-controls"><div class="format-switch" role="group" aria-label="Aspect ratio"><button type="button" data-format="poster" aria-pressed="true">2:3</button><button type="button" data-format="story" aria-pressed="false">9:16</button><button type="button" data-format="square" aria-pressed="false">1:1</button></div><button id="playback" class="playback" type="button" aria-label="Play" title="Play" data-playing="false" disabled><span class="playback-icon" aria-hidden="true"></span></button><button id="randomize" class="randomize" type="button" aria-label="Randomize" title="Randomize" disabled><span aria-hidden="true">↻</span></button></div><div class="preview-actions"><button id="mobile-add" class="mobile-add" type="button">＋ Add</button><button id="settings" class="settings-button" type="button" aria-controls="controls-sheet" aria-expanded="false">Settings</button><div class="export-control"><button id="export" class="export" type="button" aria-controls="export-choices" aria-expanded="false" disabled>Export</button><div id="export-choices" class="export-choices" hidden><button id="export-image" type="button">Image <span>PNG</span></button><button id="export-video" type="button">Video <span>15 s</span></button></div></div></div></div>
+</section>
+<div class="sheet-backdrop" id="sheet-backdrop" aria-hidden="true"></div>
+<aside id="controls-sheet" class="panel" aria-label="Pattern controls">
+<div class="sheet-bar"><span>Settings</span><button id="sheet-handle" type="button" aria-label="Close settings"><span></span></button><button id="close-sheet" type="button" aria-label="Close settings">×</button></div><div class="sheet-content">
+<nav class="mobile-tabs" aria-label="Editor panels"><button type="button" data-panel="objects" aria-pressed="false">Objects</button><button type="button" data-panel="arrangement" aria-pressed="true">Pattern</button><button type="button" data-panel="look" aria-pressed="false">Look</button><button type="button" data-panel="text" aria-pressed="false">Text</button></nav>
+<div class="panel-feedback"><div id="processing" hidden><div class="visually-hidden"><span id="processing-text">Preparing cutout…</span></div><progress id="progress" max="100"></progress></div></div>
+<section class="control-section objects">
+<div id="drop-zone" class="upload-zone">
+<input id="upload" type="file" accept="image/*" multiple hidden>
+<button id="upload-objects" type="button" class="upload-action">Upload objects</button>
+<span class="desktop-upload-copy">Drop images here or browse</span>
+<span class="mobile-upload-copy">Choose from your photo library or camera</span>
+</div>
+<details class="object-library"><summary>Browse object library</summary><div id="library-items" class="library-items"></div></details>
+<div id="objects" class="object-list"></div>
+</section>
+<section class="control-section arrangement">
+<div class="slider"><label for="density">Density</label><output for="density" id="density-value">12 / ring</output><input id="density" type="range" min="6" max="30" step="2" value="12"></div>
+<div class="slider"><label for="scale">Scale</label><output for="scale" id="scale-value">50%</output><input id="scale" type="range" min="0" max="100" value="50"></div>
+<div class="slider"><label for="rotation">Rotation</label><output for="rotation" id="rotation-value">0°</output><input id="rotation" type="range" min="-120" max="120" value="0"></div>
+<div class="slider"><label for="size">Element size</label><output for="size" id="size-value">100%</output><input id="size" type="range" min="40" max="160" value="100"></div>
+</section>
+<section class="control-section look-controls" aria-label="Lighting and effects">
+<div class="palette-options" role="group" aria-labelledby="palette-label">
+<span id="palette-label" class="palette-label">Color</span>
+<button type="button" data-palette="none" aria-label="No color" title="No color" aria-pressed="false"><span aria-hidden="true"></span></button>
+<button type="button" data-palette="red" aria-label="Red" aria-pressed="true"><span aria-hidden="true"></span></button>
+<button type="button" data-palette="blue" aria-label="Blue-green" aria-pressed="false"><span aria-hidden="true"></span></button>
+<button type="button" data-palette="green" aria-label="Green" aria-pressed="false"><span aria-hidden="true"></span></button>
+<button type="button" data-palette="amber" aria-label="Yellow-orange" aria-pressed="false"><span aria-hidden="true"></span></button>
+</div>
+<label class="effect-option"><span>Chromatic aberration</span><input type="checkbox" data-effect="chromatic" checked></label>
+<label class="effect-option"><span>Rainbow halo</span><input type="checkbox" data-effect="halo" checked></label>
+<label class="effect-option"><span>Lens distortion</span><input type="checkbox" data-effect="lensDistortion"></label>
+</section>
+<section class="control-section poster-copy" aria-label="Poster text">
+<label class="effect-option"><span>No text</span><input type="checkbox" data-effect="noText" aria-controls="poster-text-fields poster-inline"></label>
+<div id="poster-text-fields" class="poster-text-fields">
+<label for="poster-headline">Headline</label>
+<textarea id="poster-headline" data-poster-copy="headline" rows="2"></textarea>
+<label for="poster-footer-copy">Lower-right text</label>
+<textarea id="poster-footer-copy" data-poster-copy="footerCopy" rows="3"></textarea>
+</div>
+</section>
+</div></aside>
+</main>
+<dialog id="about-dialog" class="about-dialog" aria-labelledby="about-title">
+<div class="about-content">
+ <div class="about-heading">
+  <h2 id="about-title">About &amp; Credits</h2>
+  <form method="dialog"><button type="submit" class="about-close" aria-label="Close About &amp; Credits" autofocus>×</button></form>
+ </div>
+ <p>Patterning is an independent fan project by Seva Shaposhnikov, inspired by the strange, shifting world of <a href="https://www.remedygames.com/games/control-2" target="_blank" rel="noopener"><cite>CONTROL Resonant</cite></a>. It turns everyday objects into kaleidoscopic posters as a tribute to the game's surreal visual language.</p>
+ <p>Remedy Entertainment owns the CONTROL franchise, including its trademarks, logos, and game assets. This project is unaffiliated with Remedy Entertainment and has no official endorsement.</p>
+ <h3>Tools and privacy</h3>
+ <p>Background removal uses <a href="https://github.com/xuebinqin/U-2-Net" target="_blank" rel="noopener">U²-NetP</a> (<a href="./assets/MODEL-LICENSE.txt">Apache 2.0</a>) and ONNX Runtime (MIT). The model is served by this site and the runtime loads from jsDelivr.</p>
+ <p>Your images and current composition are saved only in this browser. Remove an image to delete it from the saved composition.</p>
+</div>
+</dialog>
+<p id="status" class="visually-hidden" role="status" aria-live="polite"></p><noscript>This playground needs JavaScript to arrange objects and process images.</noscript><script type="module" src="./assets/app.js?v=42"></script>
+</body></html>
