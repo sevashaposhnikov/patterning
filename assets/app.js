@@ -1,6 +1,6 @@
 import {createCycle,sampleCycle,sampleLightPulse,shakeItems,spinItems} from './animation.mjs?v=7';
 import {chooseDemoObjects,objectLibrary} from './demo.mjs?v=6';
-import {recordVideo,videoSupported} from './video.mjs?v=2';
+import {recordVideo,videoSupported} from './video.mjs?v=3';
 import {layout,outputSize} from './layout.mjs?v=13';
 import {compositionUnit,fittedCompositionUnit,paintObjectLayers} from './object-renderer.mjs?v=25';
 import {lightingPalette,paintAlley,paintRainbowHalo} from './lighting.mjs?v=17';
@@ -567,7 +567,8 @@ function download(blob,extension){
  link.click();
  setTimeout(()=>URL.revokeObjectURL(url),30000);
 }
-async function exportComposition(video){
+async function exportComposition(videoDuration=0){
+ const video=videoDuration>0;
  if(exportButton.disabled)return;
  setExportChoices(false);
  if(video&&!videoSupported){
@@ -593,7 +594,7 @@ async function exportComposition(video){
    const base={...state}, appearance={...look}, ready=objects.filter(o=>o.cut);
    const startSpinTime=playback.spinBase+playback.completedTime+playback.elapsed;
    let cycle=createCycle(base), cycleStart=0;
-   const blob=await recordVideo(out,time=>{
+   const blob=await recordVideo(out,videoDuration,time=>{
     if(time-cycleStart>=cycle.duration){
      cycleStart+=cycle.duration;
      cycle=createCycle(cycle.jumps.at(-1).pose);
@@ -612,7 +613,7 @@ async function exportComposition(video){
     }
    },progress=>{exportButton.textContent=`Video ${Math.floor(progress*100)}%`;});
    download(blob,blob.type.startsWith('video/mp4')?'mp4':'webm');
-   status('Exported a 15-second video.');
+   status(`Exported a ${videoDuration}-second video.`);
   }else{
    draw(target,out.width,out.height);
    download(await toBlob(out),'png');
@@ -629,8 +630,10 @@ async function exportComposition(video){
   if(!exportButton.disabled&&document.activeElement===document.body)exportButton.focus();
  }
 }
-$('export-image').onclick=()=>exportComposition(false);
-$('export-video').onclick=()=>exportComposition(true);
+$('export-image').onclick=()=>exportComposition();
+for(const button of exportChoices.querySelectorAll('[data-video-duration]')){
+ button.onclick=()=>exportComposition(Number(button.dataset.videoDuration));
+}
 window.addEventListener('pagehide',()=>{pausePlayback();checkpoint();stopWorker();busy=false;active=null;queue=[];$('processing').hidden=true;});
 window.addEventListener('pageshow',event=>{if(event.persisted){updateExportButton();listObjects();render();}});
 async function boot(){
