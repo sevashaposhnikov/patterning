@@ -23,7 +23,7 @@ Open <http://localhost:8000> in a modern browser. The app is a static site with 
 - Start with a demo or add your own image. A cutout occupies one ring, and each ring repeats its object at equal angles.
 - Adjust density, scale, rotation, and element size. Ring overlaps wrap around the circle, and cast shadows stay on the objects.
 - Play animates the rings and optical effects. Poster copy is editable on the canvas.
-- Export a PNG or a 15-second video. The video format depends on browser support. No color gives PNGs a transparent background.
+- Export a PNG or a 15- or 30-second video. The video format depends on browser support. No color gives PNGs a transparent background.
 - Images are processed and saved in your browser. Background removal loads ONNX Runtime Web from jsDelivr when needed. It uses the bundled U²-NetP model, without sending your images to a server.
 
 ## Assets and third-party notices
@@ -32,9 +32,10 @@ The demo library includes all 22 images generated for Patterning. The example an
 
 - [Inter](https://github.com/rsms/inter) is distributed under the [SIL Open Font License 1.1](assets/inter-license.txt).
 - [U²-Net](https://github.com/xuebinqin/U-2-Net) is distributed under [Apache 2.0](assets/MODEL-LICENSE.txt). The bundled ONNX conversion is the [U²-NetP model from the rembg release](https://github.com/danielgatis/rembg/releases/download/v0.0.0/u2netp.onnx). Its SHA-256 is `309c8469258dda742793dce0ebea8e6dd393174f89934733ecc8b14c76f4ddd8`.
+- Video encoding and muxing use [Mediabunny 1.65.2](https://www.npmjs.com/package/mediabunny/v/1.65.2), distributed under the [Mozilla Public License 2.0](assets/MEDIABUNNY-LICENSE.txt). The corresponding source is included in the [upstream package archive](https://registry.npmjs.org/mediabunny/-/mediabunny-1.65.2.tgz).
 - [ONNX Runtime Web](https://github.com/microsoft/onnxruntime) is loaded at runtime and is distributed under the [MIT license](https://github.com/microsoft/onnxruntime/blob/main/LICENSE).
 - Remedy Entertainment owns the CONTROL franchise and its associated marks. This project is unaffiliated with Remedy Entertainment and has no official endorsement.
 
 ## License
 
-Patterning's source code and sample illustrations are available under the [MIT License](LICENSE). The bundled font and model are distributed under their respective licenses listed above.
+Patterning's source code and sample illustrations are available under the [MIT License](LICENSE). Third-party components are distributed under their respective licenses listed above.
